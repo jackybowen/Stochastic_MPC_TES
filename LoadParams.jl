@@ -158,7 +158,7 @@ mutable struct MPCParams
     # inner constructor
     function MPCParams()
         # read config file for optimization and model parameters
-        conf = ConfParse("Configs/opt_params.ini")
+        conf = ConfParse("Configs/mpc_params.ini")
         parse_conf!(conf)
 
         # define new instance

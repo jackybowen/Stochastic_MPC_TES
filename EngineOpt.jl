@@ -31,7 +31,7 @@ if  o.oatpredflag == 1
 end
 global true_comfortbounds = DataFrames.DataFrame()
 if  o.comfortboundsflag == 1
-    true_comfortbounds = CSV.read("daily_comfortbounds.csv", DataFrame);
+    true_comfortbounds = CSV.read("Configs/daily_comfortbounds.csv", DataFrame);
 end
 ## list of supervisory setpoints set by MPC (these are sent to Modelica)
 # supply-air temperatures at the AHU level
