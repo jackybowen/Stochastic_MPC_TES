@@ -4,7 +4,7 @@ using Printf
 using MathOptInterface
 const MOI = MathOptInterface
 # import the Julia script with the optimization model and associated dependencies
-include("opt_engine.jl")
+include("EngineOpt.jl")
 global status_optimalSolution = [MOI.OPTIMAL]
 global status_goodSolution = [MOI.LOCALLY_SOLVED, MOI.ALMOST_OPTIMAL]
 global status_badSolution = [MOI.ALMOST_LOCALLY_SOLVED, MOI.INFEASIBLE, MOI.DUAL_INFEASIBLE, MOI.LOCALLY_INFEASIBLE, MOI.INFEASIBLE_OR_UNBOUNDED, MOI.ALMOST_INFEASIBLE, MOI.ALMOST_DUAL_INFEASIBLE]
@@ -69,9 +69,6 @@ function compute_control!(u::Dict, currentMeasurements::Dict)
         @printf("floor %d -> ahusupplytemp = %.4f, constrain: [%.2f, %.2f]\n", f, JuMP.value(ahusupplytemp[f, 1]), p.ahusupplytemp_min, p.ahusupplytemp_max)
         @printf("floor %d -> ahumixedtemp = %.4f, constrain: [%.2f, %.2f]\n", f, JuMP.value(ahumixedtemp[f, 1]), JuMP.value(ahureturntemp[f, 1]), JuMP.value(oat[1]))
         @printf("floor %d -> ahudamper = %.4f, constrain: [%.2f, %2f]\n", f, JuMP.value(ahudamper[f, 1]), p.damper_min[f], p.damper_max[f])
-        df_P[!,Symbol("floor$(f)_P_h_pred")] = [JuMP.value(heatingcapacity[f, 1])]
-        df_P[!,Symbol("floor$(f)_P_c_pred")] = [JuMP.value(chillercapacity[f, 1])]
-        df_P[!,Symbol("floor$(f)_P_f_pred")] = [JuMP.value(fanenergy[f, 1])]
         for z = 1 : p.numzones
             zid = (f-1)*p.numzones + z;
             if  o.debugmodeflag == 1

@@ -122,6 +122,43 @@ mutable struct BldgParams
             end
         end
 
+        # static pressure parameters
+        section = "pressure_damper_params"
+        # obj.pressure_min = ones(obj.numfloors)
+        # obj.pressure_max = ones(obj.numfloors)
+        # obj.massflow_sample_0 = ones(obj.numfloors)
+        # obj.massflow_sample_1 = ones(obj.numfloors)
+        # obj.massflow_sample_2 = ones(obj.numfloors)
+        # obj.massflow_sample_3 = ones(obj.numfloors)
+        # obj.massflow_sample_4 = ones(obj.numfloors)
+        # obj.massflow_sample_5 = ones(obj.numfloors)
+        # obj.pressure_sample_0 = ones(obj.numfloors)
+        # obj.pressure_sample_1 = ones(obj.numfloors)
+        # obj.pressure_sample_2 = ones(obj.numfloors)
+        # obj.pressure_sample_3 = ones(obj.numfloors)
+        # obj.pressure_sample_4 = ones(obj.numfloors)
+        # obj.pressure_sample_5 = ones(obj.numfloors)
+        obj.damper_min = ones(obj.numfloors)
+        obj.damper_max = ones(obj.numfloors)
+        for f in 1:obj.numfloors
+            # obj.massflow_sample_0[f] = parse_float(conf, section, "floor$(f)_massflow_sample_0")
+            # obj.massflow_sample_1[f] = parse_float(conf, section, "floor$(f)_massflow_sample_1")
+            # obj.massflow_sample_2[f] = parse_float(conf, section, "floor$(f)_massflow_sample_2")
+            # obj.massflow_sample_3[f] = parse_float(conf, section, "floor$(f)_massflow_sample_3")
+            # obj.massflow_sample_4[f] = parse_float(conf, section, "floor$(f)_massflow_sample_4")
+            # obj.massflow_sample_5[f] = parse_float(conf, section, "floor$(f)_massflow_sample_5")
+            # obj.pressure_sample_0[f] = parse_float(conf, section, "floor$(f)_pressure_sample_0")
+            # obj.pressure_sample_1[f] = parse_float(conf, section, "floor$(f)_pressure_sample_1")
+            # obj.pressure_sample_2[f] = parse_float(conf, section, "floor$(f)_pressure_sample_2")
+            # obj.pressure_sample_3[f] = parse_float(conf, section, "floor$(f)_pressure_sample_3")
+            # obj.pressure_sample_4[f] = parse_float(conf, section, "floor$(f)_pressure_sample_4")
+            # obj.pressure_sample_5[f] = parse_float(conf, section, "floor$(f)_pressure_sample_5")
+            # # obj.pressure_min[f] = parse_float(conf, section, "floor$(f)_pressure_min")
+            # obj.pressure_max[f] = parse_float(conf, section, "floor$(f)_pressure_max")
+            obj.damper_min[f] = parse_float(conf, section, "floor$(f)_damper_min")
+            obj.damper_max[f] = parse_float(conf, section, "floor$(f)_damper_max")
+        end
+
         return obj
     end
 end
@@ -138,12 +175,14 @@ mutable struct MPCParams
     weight_cool::Float64
     weight_norm::Float64
     penalty::Float64
-    objectivemodelflag::Int
-    oatpredflag::Int
-    comfortboundsflag::Int
-    loadpredflag::Int
-    debugmodeflag::Int
-    solverflag::Int
+    objmodel_flag::Int
+    oatpred_flag::Int
+    VBModel_flag::Int
+    TESModel_flag::Int
+    BESModel_flag::Int
+    comfortbounds_flag::Int
+    debugmode_flag::Int
+    solver_type::Int
     maxiter::Int
     # cl_baseline::Int
     # cl_startday::Float64
@@ -180,15 +219,17 @@ mutable struct MPCParams
 
         # flags
         section = "flags"
-        obj.objectivemodelflag = parse_int(conf, section, "objectivemodelflag")
-        obj.oatpredflag = parse_int(conf, section, "oatpredflag")
-        obj.loadpredflag = parse_int(conf, section, "loadpredflag")
-        obj.comfortboundsflag = parse_int(conf, section, "comfortboundsflag")
-        obj.debugmodeflag = parse_int(conf, section, "debugmodeflag")
+        obj.objmodel_flag = parse_int(conf, section, "objmodel_flag")
+        obj.oatpred_flag = parse_int(conf, section, "oatpred_flag")
+        obj.VBModel_flag = parse_int(conf, section, "VBModel_flag")
+        obj.TESModel_flag = parse_int(conf, section, "TESModel_flag")
+        obj.BESModel_flag = parse_int(conf, section, "BESModel_flag")
+        obj.comfortbounds_flag = parse_int(conf, section, "comfortbounds_flag")
+        obj.debugmode_flag = parse_int(conf, section, "debugmode_flag")
 
         # solver params
         section = "solver_params"
-        obj.solverflag = parse_int(conf, section, "solverflag")
+        obj.solver_type = parse_int(conf, section, "solver_type")
         obj.maxiter = parse_int(conf, section, "maxiter")
 
         # # closedloop params
