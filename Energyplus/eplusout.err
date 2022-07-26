@@ -1,0 +1,444 @@
+Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 12:19,
+   ************* Beginning Zone Sizing Calculations
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 29.4", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 19", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 23", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 1", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 12.8", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 7.22", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="COMPACT HVAC-ALWAYS 10.0", Schedule Type Limits Name="COMPACT HVAC ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="COMPACT HVAC-ALWAYS 7.22", Schedule Type Limits Name="COMPACT HVAC ANY NUMBER" not found -- will not be validated
+   ** Warning ** ProcessScheduleInput: Schedule:Compact="COMPACT HVAC-ALWAYS 1", Schedule Type Limits Name="COMPACT HVAC ANY NUMBER" not found -- will not be validated
+   ** Warning ** BuildingSurface:Detailed="SOLAR PV SURFACE", Sun Exposure="SUNEXPOSED".
+   **   ~~~   ** ..This surface is not exposed to External Environment.  Sun exposure has no effect.
+   ** Warning ** CalculateZoneVolume: The Zone="ZONE-AHU-004" is not fully enclosed. To be fully enclosed, each edge of a surface must also be an edge on one other surface.
+   **   ~~~   **   The zone volume was calculated using the floor area times ceiling height method where the floor is horizontal, the walls are vertical, and the wall heights are all the same.
+   **   ~~~   **   The surface    "SOLAR PV SURFACE" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 0.1000, 26.2000, 50.0000}
+   **   ~~~   **     Vertex end   { 0.0000, 26.2000, 50.0000}
+   **   ~~~   **   The surface    "SOLAR PV SURFACE" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 0.0000, 26.2000, 50.0000}
+   **   ~~~   **     Vertex end   { 0.0000, 26.1000, 50.0000}
+   **   ~~~   **   The surface    "SOLAR PV SURFACE" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 0.0000, 26.1000, 50.0000}
+   **   ~~~   **     Vertex end   { 0.1000, 26.1000, 50.0000}
+   **   ~~~   **   The surface    "SOLAR PV SURFACE" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 0.1000, 26.1000, 50.0000}
+   **   ~~~   **     Vertex end   { 0.1000, 26.2000, 50.0000}
+   ** Warning ** CalculateZoneVolume: The Zone="ZONE-VAV-CORRIDOR" is not fully enclosed. To be fully enclosed, each edge of a surface must also be an edge on one other surface.
+   **   ~~~   **   The zone volume was calculated using the floor area times ceiling height method where the floor and ceiling are the same except for the z-coordinates.
+   **   ~~~   **   The surface    "7336D1" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 32.0040, 9.5504, 3.6576}
+   **   ~~~   **     Vertex end   { 32.0040, 9.5504, 0.0000}
+   **   ~~~   **   The surface    "7336D1" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 38.2524, 9.5504, 0.0000}
+   **   ~~~   **     Vertex end   { 38.2524, 9.5504, 3.6576}
+   **   ~~~   **   The surface    "613051" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 41.3258, 9.5504, 3.6576}
+   **   ~~~   **     Vertex end   { 41.3258, 9.5504, 0.0000}
+   **   ~~~   **   The surface    "5B45AC" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 28.9306, 9.5504, 3.6576}
+   **   ~~~   **     Vertex end   { 28.9306, 9.5504, 0.0000}
+   **   ~~~   **   The surface    "32D862" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 41.3258, 13.2080, 3.6576}
+   **   ~~~   **     Vertex end   { 41.3258, 13.2080, 0.0000}
+   **   ~~~   **   The surface    "9F2596" has an edge that is either not an edge on another surface or is an edge on three or more surfaces: 
+   **   ~~~   **     Vertex start { 28.9306, 13.2080, 3.6576}
+   **   ~~~   **     Vertex end   { 28.9306, 13.2080, 0.0000}
+   ** Warning ** GetPlantLoopData/GetPlantAvailabilityManager: AvailabilityManagerAssignmentList=CHILLED WATER LOOP PRIMARY AVAILABILITY LIST not found in lists.  No availability will be used.
+   ** Warning ** ElectricStorage constructor ElectricLoadCenter:Storage:Simple="TEST BATTERY", invalid entry.
+   **   ~~~   ** Invalid Zone Name = BASEMENT
+   **   ~~~   ** Zone name not found. Storage heat losses will not be added to a zone
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-129 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-123B is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-SERVER is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-118 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-120 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-119 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-RESTROOM is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-AHU-004 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-FCU-001 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-112 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=ZONE-VAV-133 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ************* Beginning System Sizing Calculations
+   ** Warning ** SetUpSysSizingArrays: Sizing for System (HVACAirLoop)="AHU-005" will use Sizing:System specifications listed for System="AHU-001".
+   ************* Beginning Plant Sizing Calculations
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-143 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 5.72038E-002 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-142 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.10000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 5.60190E-002 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-136 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 6.38687E-002 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-127B VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.19138 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-131 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.20440 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-129 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.24690 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-129 VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-129 VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-150 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.12480 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-123A VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.22085 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-123A VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-123A VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-123B VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.22604 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-123B VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-123B VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-118 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.25890 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-118 VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-118 VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-120 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.22882 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-120 VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-120 VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-119 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.23428 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-119 VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-119 VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-RESTROOM VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.25723 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-RESTROOM VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-RESTROOM VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-102 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.15238 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-105 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.15653 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-112 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.19126 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-112 VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-112 VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-104 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.34804 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-108 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.20699 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-CORRIDOR VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.38048 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-133 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.37005 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** SizeWaterCoil: Potential issue with equipment sizing for Coil:Heating:Water ZONE-VAV-133 VAV BOX REHEAT COIL
+   **   ~~~   ** ...Rated Total Heating Capacity = 0.00 [W]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Air flow rate used for sizing = 0.00000 [m3/s]
+   **   ~~~   ** ...Plant loop temperature difference = 11.00 [C]
+   ** Warning ** The design coil load is zero for Coil:Heating:Water ZONE-VAV-133 VAV BOX REHEAT COIL
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* SizeHVACSingleDuct: Potential issue with equipment sizing for AirTerminal:SingleDuct:VAV:Reheat = "ZONE-VAV-107 VAV BOX COMPONENT".
+   **   ~~~   ** User-Specified Minimum Cooling Air Flow Fraction of 0.30000 [m3/s]
+   **   ~~~   ** differs from Design Size Minimum Cooling Air Flow Fraction of 0.23320 [m3/s]
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeWaterCoil: Potential issue with equipment sizing for Coil:Cooling:Water AHU-001 COOLC
+   **   ~~~   ** User-Specified Design Water Flow Rate [m3/s] = 4.11000E-003
+   **   ~~~   ** differs from Design Size Design Water Flow Rate [m3/s] = 2.81144E-003
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ************* SizeFan: : Potential issue with equipment sizing for Fan:VariableVolume AHU-001 FAN
+   **   ~~~   ** User-Specified Maximum Flow Rate [m3/s] = 7.40000
+   **   ~~~   ** differs from Design Size Maximum Flow Rate [m3/s] = 4.84044
+   **   ~~~   ** This may, or may not, indicate mismatched component sizes.
+   **   ~~~   ** Verify that the value entered is intended and is consistent with other components.
+   ** Warning ** GetDXCoils: Coil:Heating:DX:SingleSpeed="FCU-001 HEATC" curve values
+   **   ~~~   ** ... Defrost Energy Input Ratio Function of Temperature Curve Name = HPACCOOLEIRFT output is not equal to 1.0 (+ or - 10%) at rated conditions.
+   **   ~~~   ** ... Curve output at rated conditions = 0.787
+   ** Warning ** GetDXCoils: Coil:Heating:DX:SingleSpeed="FCU-002 HEATC" curve values
+   **   ~~~   ** ... Defrost Energy Input Ratio Function of Temperature Curve Name = HPACCOOLEIRFT output is not equal to 1.0 (+ or - 10%) at rated conditions.
+   **   ~~~   ** ... Curve output at rated conditions = 0.787
+   ** Warning ** GetDXCoils: Coil:Heating:DX:SingleSpeed="FCU-003 HEATC" curve values
+   **   ~~~   ** ... Defrost Energy Input Ratio Function of Temperature Curve Name = HPACCOOLEIRFT output is not equal to 1.0 (+ or - 10%) at rated conditions.
+   **   ~~~   ** ... Curve output at rated conditions = 0.787
+   ** Warning ** SizeDXCoil Coil:Cooling:DX:SingleSpeed AHU-005 COOLC DXCOIL
+   **   ~~~   ** ...Gross Rated Total Cooling Capacity [W] will be limited by the maximum rated volume flow per rated total capacity ratio.
+   **   ~~~   ** ...DX coil volume flow rate ( m3/s ) = 3.555871
+   **   ~~~   ** ...Requested capacity ( W ) = 48034.234
+   **   ~~~   ** ...Requested flow/capacity ratio ( m3/s/W ) = 7.402E-005
+   **   ~~~   ** ...Maximum flow/capacity ratio ( m3/s/W ) = 6.041E-005
+   **   ~~~   ** ...Adjusted capacity ( W ) = 58862.304
+   ** Warning ** The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = AHU-005 COOLC DXCOIL but not at the AHRI test condition due to curve out of bound.
+   **   ~~~   **  Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance.
+   **   ~~~   ** CheckCurveLimitsForStandardRatings: The max and/or min limits specified in the corresponding curve objects
+   **   ~~~   **  do not include the AHRI test conditions required to calculate one or more of the Standard Rating values.
+   **   ~~~   ** Coil:Cooling:DX:SingleSpeed=AHU-005 COOLC DXCOIL:  Integrated Energy Efficiency Ratio (IEER) calculated is not at the AHRI test condition.
+   **   ~~~   **  Check limits in Total Cooling Capacity Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLCAPFT
+   **   ~~~   **  Check limits in EIR Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLEIRFT
+   ** Warning ** The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = FCU-001 COOLC but not at the AHRI test condition due to curve out of bound.
+   **   ~~~   **  Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance.
+   **   ~~~   ** CheckCurveLimitsForStandardRatings: The max and/or min limits specified in the corresponding curve objects
+   **   ~~~   **  do not include the AHRI test conditions required to calculate one or more of the Standard Rating values.
+   **   ~~~   ** Coil:Cooling:DX:SingleSpeed=FCU-001 COOLC:  Integrated Energy Efficiency Ratio (IEER) calculated is not at the AHRI test condition.
+   **   ~~~   **  Check limits in Total Cooling Capacity Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLCAPFT
+   **   ~~~   **  Check limits in EIR Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLEIRFT
+   ** Warning ** SizeDXCoil Coil:Cooling:DX:SingleSpeed FCU-002 COOLC
+   **   ~~~   ** ...Gross Rated Total Cooling Capacity [W] will be limited by the maximum rated volume flow per rated total capacity ratio.
+   **   ~~~   ** ...DX coil volume flow rate ( m3/s ) = 0.446047
+   **   ~~~   ** ...Requested capacity ( W ) = 6846.368
+   **   ~~~   ** ...Requested flow/capacity ratio ( m3/s/W ) = 6.515E-005
+   **   ~~~   ** ...Maximum flow/capacity ratio ( m3/s/W ) = 6.041E-005
+   **   ~~~   ** ...Adjusted capacity ( W ) = 7383.669
+   ** Warning ** The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = FCU-002 COOLC but not at the AHRI test condition due to curve out of bound.
+   **   ~~~   **  Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance.
+   **   ~~~   ** CheckCurveLimitsForStandardRatings: The max and/or min limits specified in the corresponding curve objects
+   **   ~~~   **  do not include the AHRI test conditions required to calculate one or more of the Standard Rating values.
+   **   ~~~   ** Coil:Cooling:DX:SingleSpeed=FCU-002 COOLC:  Integrated Energy Efficiency Ratio (IEER) calculated is not at the AHRI test condition.
+   **   ~~~   **  Check limits in Total Cooling Capacity Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLCAPFT
+   **   ~~~   **  Check limits in EIR Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLEIRFT
+   ** Warning ** SizeDXCoil Coil:Cooling:DX:SingleSpeed FCU-003 COOLC
+   **   ~~~   ** ...Gross Rated Total Cooling Capacity [W] will be limited by the maximum rated volume flow per rated total capacity ratio.
+   **   ~~~   ** ...DX coil volume flow rate ( m3/s ) = 0.270444
+   **   ~~~   ** ...Requested capacity ( W ) = 4182.891
+   **   ~~~   ** ...Requested flow/capacity ratio ( m3/s/W ) = 6.465E-005
+   **   ~~~   ** ...Maximum flow/capacity ratio ( m3/s/W ) = 6.041E-005
+   **   ~~~   ** ...Adjusted capacity ( W ) = 4476.812
+   ** Warning ** The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = FCU-003 COOLC but not at the AHRI test condition due to curve out of bound.
+   **   ~~~   **  Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance.
+   **   ~~~   ** CheckCurveLimitsForStandardRatings: The max and/or min limits specified in the corresponding curve objects
+   **   ~~~   **  do not include the AHRI test conditions required to calculate one or more of the Standard Rating values.
+   **   ~~~   ** Coil:Cooling:DX:SingleSpeed=FCU-003 COOLC:  Integrated Energy Efficiency Ratio (IEER) calculated is not at the AHRI test condition.
+   **   ~~~   **  Check limits in Total Cooling Capacity Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLCAPFT
+   **   ~~~   **  Check limits in EIR Function of Temperature Curve, Curve Type = Curve:Biquadratic, Curve Name = HPACCOOLEIRFT
+   ** Warning ** GetElectricEIRChillerInput: Chiller:Electric:EIR="SEB CHILLER"
+   **   ~~~   ** Adding OutdoorAir:Node=SEB CHILLER CND INLET
+   ** Warning ** GetElectricEIRChillerInput: Chiller:Electric:EIR="SEB CHILLER-CHARGING"
+   **   ~~~   ** Adding OutdoorAir:Node=SEB CHILLER-CHARGING CND INLET
+   ** Warning ** SetupCommonPipes: detected variable speed pump on supply inlet of TwoWayCommonPipe plant loop
+   **   ~~~   ** Occurs on plant loop name = COOLSYS1
+   **   ~~~   ** The common pipe model does not support varying the flow rate on the primary/supply side
+   **   ~~~   ** The primary/supply side will operate as if constant speed, and the simulation continues
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="ZONE-SERVER" did not converge after 25 warmup days.
+   **   ~~~   ** See Warmup Convergence Information in .eio file for details.
+   **   ~~~   ** ...Environment(RunPeriod)="TYPICAL SUMMER WEEK"
+   **   ~~~   ** ..Max Temp Comparison = 0.34 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
+   **   ~~~   ** ..Min Temp Comparison = 0.37 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
+   **   ~~~   ** ..Max Heat Load Comparison = 0.0000 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
+   **   ~~~   ** ..Max Cool Load Comparison = 1.9079E-004 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
+   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="ZONE-VAV-RESTROOM" did not converge after 25 warmup days.
+   **   ~~~   ** ...Environment(RunPeriod)="TYPICAL SUMMER WEEK"
+   **   ~~~   ** ..Max Temp Comparison = 0.27 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
+   **   ~~~   ** ..Min Temp Comparison = 0.26 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
+   **   ~~~   ** ..Max Heat Load Comparison = 2.4666E-002 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
+   **   ~~~   ** ..Max Cool Load Comparison = 3.6293E-003 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
+   ************* Simulation Error Summary *************
+   ** Warning ** The following Report Variables were requested but not generated -- check.rdd file
+   **   ~~~   ** Either the IDF did not contain these elements, the variable name is misspelled,
+   **   ~~~   ** or the requested variable is an advanced output which requires Output : Diagnostics, DisplayAdvancedReportVariables;
+   ************* Key=*, VarName=ICE THERMAL STORAGE COOLING RATE, Frequency=TimeStep
+   ************* Key=*, VarName=ICE THERMAL STORAGE CHANGE FRACTION, Frequency=TimeStep
+   ************* Key=SEB Chiller-Charging Setpoint Temp Schedule, VarName=SCHEDULE:COMPACT, Frequency=TimeStep
+   ************* Key=*, VarName=ELECTRICITY:FACILITY, Frequency=TimeStep
+   ************* Key=*, VarName=DISCHARGEHISTORY, Frequency=TimeStep
+   ************* Key=*, VarName=DISCHARGETOTAL, Frequency=TimeStep
+   ************* Key=*, VarName=MAXCUMULATIVE, Frequency=TimeStep
+   ************* Key=*, VarName=MAXADD, Frequency=TimeStep
+   ************* Key=*, VarName=DISTRICT COOLING RATE, Frequency=TimeStep
+   ************* Key=*, VarName=CURRENTMONTHV, Frequency=TimeStep
+   ************* Key=*, VarName=CURRENTDAYOFMONTHV, Frequency=TimeStep
+   ************* Key=*, VarName=CURRENTHOURV, Frequency=TimeStep
+   ************* Key=*, VarName=CURRENTMINUTEV, Frequency=TimeStep
+   ************* Key=*, VarName=ZONE THERMAL COMFORT FANGER MODEL PPD, Frequency=TimeStep
+   ** Warning ** The following schedule names are "Unused Schedules".  These schedules are in the idf
+   **   ~~~   **  file but are never obtained by the simulation and therefore are NOT used.
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=WORK EFF SCH
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=AIR VELO SCH
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLOTHING SCH
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=BLDG LIGHT SCH BAK
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=OLD BLDG EQUIP SCH
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=BLDG SWH SCH
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CW-LOOP-TEMP-SCHEDULE
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FRONTENTRY FANSCHED
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FRONTENTRY COILSCHED
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGTEMPSETPOINT
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FCU-CLGSETP SCH
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=PLANT LOOP HIGH TEMP SCHEDULE
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=PLANT LOOP LOW TEMP SCHEDULE
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=OLD BLDG CONTROLROOM EQUIP SCH
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGSETP SCH BASE EXTENDEDHVAC2
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGSETP SCH BASE EXTENDEDHVAC3
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGSETP SCH BASE EXTENDEDHVAC
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 29.4
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 19
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 23
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 1
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 12.8
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 7.22
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=COMPACT HVAC-ALWAYS 10.0
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=ICE TANK AVAILABILITY
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FANAVAILSCHEDINVERSE
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=P_LOSS_SCHEDULE
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=DR RESPONSE
+   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CPP EVENT
+   ** Warning ** The following week schedule names are "Unused Schedules".  These schedules are in the idf
+   **   ~~~   **  file but are never obtained by the simulation and therefore are NOT used.
+   ************* Schedule:Week:Daily or Schedule:Week:Compact=P_LOSS_SCHEDULE_wk_
+   ************* Schedule:Week:Daily or Schedule:Week:Compact=DR RESPONSE_wk_
+   ************* Schedule:Week:Daily or Schedule:Week:Compact=CPP EVENT_wk_
+   ** Warning ** The following day schedule names are "Unused Schedules".  These schedules are in the idf
+   **   ~~~   **  file but are never obtained by the simulation and therefore are NOT used.
+   ************* Schedule:Day:Hourly or Schedule:Day:Interval or Schedule:Day:List=P_LOSS_SCHEDULE_dy_
+   ************* Schedule:Day:Hourly or Schedule:Day:Interval or Schedule:Day:List=DR RESPONSE_dy_
+   ************* Schedule:Day:Hourly or Schedule:Day:Interval or Schedule:Day:List=CPP EVENT_dy_
+   *************
+   ************* ===== Final Error Summary =====
+   ************* The following error categories occurred.  Consider correcting or noting.
+   ************* Loads Initialization did not Converge
+   ************* ..1) very high thermal mass such as very thick concrete (solution: increase max number of warmup
+   ************* ..   days in the BUILDING object);
+   ************* ..2) moderate mass and inadequate space conditioning such that the building keeps getting warmer
+   ************* ..   and warmer on successive days (solution: add HVAC, check building thermal properties,
+   ************* ..   check if infiltration is included, make sure HVAC properly controlled);
+   ************* ..3) a soil layer modeled below the concrete slab - (solution remove this layer and read about
+   ************* ..   ground temperatures in the Auxiliary Programs document).
+   ************* ..4) unreasonable (too small) limits in the BUILDING object for temperature (.4 default) or
+   ************* ..   loads tolerances (.04 default)
+   *************
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 2 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 26 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 52 Warning; 2 Severe Errors; Elapsed Time=00hr 00min 16.42sec
