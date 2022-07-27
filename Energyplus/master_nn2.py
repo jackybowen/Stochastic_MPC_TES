@@ -154,9 +154,9 @@ while 1:
               time=float(arry[5])
               ################## Add interface code by Bowen ####################
               print(time)
-              Outputdict = sampler.sample2dict(Outputdict,arry,12)
+              Outputdict, result = sampler.sample2dict(Outputdict,arry,12)
               print("Start Display:")
-              print(float(arry[-1]))
+              print(float(arry[6]))
               print("End Display")
 
               ###################################################################

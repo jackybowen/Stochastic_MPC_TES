@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 12:19
+Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 15:05
 ! <Version>, Version ID
  Version, 9.0
 ! <Timesteps per Hour>, #TimeSteps, Minutes per TimeStep {minutes}
@@ -12343,40 +12343,3 @@ Environment:Special Days,LABOR DAY,Holiday,InputFile,09/05,  1
 Environment:Special Days,COLUMBUS DAY,Holiday,InputFile,10/10,  1
 Environment:Special Days,THANKSGIVING,Holiday,InputFile,11/24,  1
 Environment:WarmupDays, 25
-! <Warmup Convergence Information>,Zone Name,Environment Type/Name,Average Warmup Temperature Difference {deltaC},Std Dev Warmup Temperature Difference {deltaC},Max Temperature Pass/Fail Convergence,Min Temperature Pass/Fail Convergence,Average Warmup Load Difference {W},Std Dev Warmup Load Difference {W},Heating Load Pass/Fail Convergence,Cooling Load Pass/Fail Convergence
- Warmup Convergence Information,ZONE-VAV-143,RunPeriod: TYPICAL SUMMER WEEK,7.8228824933E-002,0.2600729926,Pass,Pass,7.5386514196E-003,4.6020058964E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-142,RunPeriod: TYPICAL SUMMER WEEK,8.6211484135E-002,0.2915174705,Pass,Pass,9.0917354759E-003,4.5162488858E-002,Pass,Pass
- Warmup Convergence Information,ZONE-HTR-001,RunPeriod: TYPICAL SUMMER WEEK,0.1233290712,8.2112320882E-002,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-136,RunPeriod: TYPICAL SUMMER WEEK,7.3318353040E-002,0.2370143893,Pass,Pass,8.4022645410E-003,4.4622863051E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-127B,RunPeriod: TYPICAL SUMMER WEEK,4.7920185534E-002,0.1743744196,Pass,Pass,9.9669013137E-003,7.4393133408E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-127A,RunPeriod: TYPICAL SUMMER WEEK,3.8677224237E-002,0.1302423186,Pass,Pass,8.9354219059E-003,6.6873131413E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-131,RunPeriod: TYPICAL SUMMER WEEK,3.8105013359E-002,0.1346271541,Pass,Pass,7.8786942896E-003,6.4056156938E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-129,RunPeriod: TYPICAL SUMMER WEEK,3.7015321241E-002,0.1292140838,Pass,Pass,7.9507269518E-003,6.5351690249E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-150,RunPeriod: TYPICAL SUMMER WEEK,4.3372995520E-002,0.1697273211,Pass,Pass,7.6350471540E-003,5.7880821765E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-123A,RunPeriod: TYPICAL SUMMER WEEK,4.1148799007E-002,0.1498059233,Pass,Pass,8.3967387347E-003,6.6459206024E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-123B,RunPeriod: TYPICAL SUMMER WEEK,4.0513452519E-002,0.1474887140,Pass,Pass,8.2715666702E-003,6.6502073867E-002,Pass,Pass
- Warmup Convergence Information,ZONE-SERVER,RunPeriod: TYPICAL SUMMER WEEK,6.6538320614E-003,8.5550203231E-003,Fail,Fail,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-118,RunPeriod: TYPICAL SUMMER WEEK,3.6636507484E-002,0.1156627679,Pass,Pass,8.1387138722E-003,6.4794830598E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-120,RunPeriod: TYPICAL SUMMER WEEK,3.4497032548E-002,0.1198088300,Pass,Pass,7.6722172229E-003,6.3603606666E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-119,RunPeriod: TYPICAL SUMMER WEEK,3.3503375421E-002,0.1167709650,Pass,Pass,7.6669039402E-003,6.3621122902E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-RESTROOM,RunPeriod: TYPICAL SUMMER WEEK,0.1164051857,0.5408918743,Fail,Fail,6.6129224224E-003,8.2040848174E-002,Pass,Pass
- Warmup Convergence Information,ZONE-AHU-004,RunPeriod: TYPICAL SUMMER WEEK,5.0911594131E-002,0.1824975103,Pass,Pass,7.9979701393E-003,6.7693010825E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-102,RunPeriod: TYPICAL SUMMER WEEK,3.9955659927E-002,0.1321295190,Pass,Pass,8.5288922537E-003,6.4469792305E-002,Pass,Pass
- Warmup Convergence Information,ZONE-FCU-001,RunPeriod: TYPICAL SUMMER WEEK,7.7349410993E-003,7.5003288596E-003,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-AHU-002,RunPeriod: TYPICAL SUMMER WEEK,4.4437760542E-002,0.1675558382,Pass,Pass,9.5288880499E-003,6.8583606572E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-105,RunPeriod: TYPICAL SUMMER WEEK,4.3500079668E-002,0.1324732652,Pass,Pass,9.8944046712E-003,7.8999580250E-002,Pass,Pass
- Warmup Convergence Information,ZONE-FCU-003,RunPeriod: TYPICAL SUMMER WEEK,1.0979259524E-002,1.0352299061E-002,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-112,RunPeriod: TYPICAL SUMMER WEEK,5.8979113619E-002,0.2260231394,Pass,Pass,7.8256452748E-003,6.9004099281E-002,Pass,Pass
- Warmup Convergence Information,ZONE-HTR-002,RunPeriod: TYPICAL SUMMER WEEK,1.2449307636E-002,9.0041296495E-003,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-HTR-003,RunPeriod: TYPICAL SUMMER WEEK,1.5234479710E-002,1.0058198871E-002,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-104,RunPeriod: TYPICAL SUMMER WEEK,3.0223195062E-002,8.9389078249E-002,Pass,Pass,8.5896416704E-003,6.5634551662E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-116,RunPeriod: TYPICAL SUMMER WEEK,2.7666659705E-002,8.4143667142E-002,Pass,Pass,8.8008456611E-003,6.5439183386E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-108,RunPeriod: TYPICAL SUMMER WEEK,5.1128579959E-002,0.1820664495,Pass,Pass,8.3930640493E-003,6.9127668353E-002,Pass,Pass
- Warmup Convergence Information,ZONE-FCU-002,RunPeriod: TYPICAL SUMMER WEEK,9.7163108330E-003,8.0001899419E-003,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-HTR-004,RunPeriod: TYPICAL SUMMER WEEK,1.1476065586E-002,9.3325422810E-003,Pass,Pass,0.0000000000,0.0000000000,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-CORRIDOR,RunPeriod: TYPICAL SUMMER WEEK,2.6013853128E-002,8.1947293022E-002,Pass,Pass,8.2799604216E-003,6.3592939800E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-133,RunPeriod: TYPICAL SUMMER WEEK,3.6108423779E-002,0.1005506415,Pass,Pass,7.6800776465E-003,6.4348869649E-002,Pass,Pass
- Warmup Convergence Information,ZONE-VAV-107,RunPeriod: TYPICAL SUMMER WEEK,3.7525323080E-002,0.1221287946,Pass,Pass,8.0188126277E-003,6.7012600501E-002,Pass,Pass
-! <Program Control Information:Threads/Parallel Sims>, Threading Supported,Maximum Number of Threads, Env Set Threads (OMP_NUM_THREADS), EP Env Set Threads (EP_OMP_NUM_THREADS), IDF Set Threads, Number of Threads Used (Interior Radiant Exchange), Number Nominal Surfaces, Number Parallel Sims
-Program Control:Threads/Parallel Sims, No,1, N/A, N/A, N/A, N/A, N/A, N/A
-End of Data

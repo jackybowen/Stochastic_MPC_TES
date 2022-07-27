@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 12:19,
+Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 15:05,
    ************* Beginning Zone Sizing Calculations
    ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 29.4", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
    ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 19", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
@@ -366,65 +366,14 @@ Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 12:19,
    **   ~~~   ** ..Min Temp Comparison = 0.26 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
    **   ~~~   ** ..Max Heat Load Comparison = 2.4666E-002 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
    **   ~~~   ** ..Max Cool Load Comparison = 3.6293E-003 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   ************* Simulation Error Summary *************
-   ** Warning ** The following Report Variables were requested but not generated -- check.rdd file
-   **   ~~~   ** Either the IDF did not contain these elements, the variable name is misspelled,
-   **   ~~~   ** or the requested variable is an advanced output which requires Output : Diagnostics, DisplayAdvancedReportVariables;
-   ************* Key=*, VarName=ICE THERMAL STORAGE COOLING RATE, Frequency=TimeStep
-   ************* Key=*, VarName=ICE THERMAL STORAGE CHANGE FRACTION, Frequency=TimeStep
-   ************* Key=SEB Chiller-Charging Setpoint Temp Schedule, VarName=SCHEDULE:COMPACT, Frequency=TimeStep
-   ************* Key=*, VarName=ELECTRICITY:FACILITY, Frequency=TimeStep
-   ************* Key=*, VarName=DISCHARGEHISTORY, Frequency=TimeStep
-   ************* Key=*, VarName=DISCHARGETOTAL, Frequency=TimeStep
-   ************* Key=*, VarName=MAXCUMULATIVE, Frequency=TimeStep
-   ************* Key=*, VarName=MAXADD, Frequency=TimeStep
-   ************* Key=*, VarName=DISTRICT COOLING RATE, Frequency=TimeStep
-   ************* Key=*, VarName=CURRENTMONTHV, Frequency=TimeStep
-   ************* Key=*, VarName=CURRENTDAYOFMONTHV, Frequency=TimeStep
-   ************* Key=*, VarName=CURRENTHOURV, Frequency=TimeStep
-   ************* Key=*, VarName=CURRENTMINUTEV, Frequency=TimeStep
-   ************* Key=*, VarName=ZONE THERMAL COMFORT FANGER MODEL PPD, Frequency=TimeStep
-   ** Warning ** The following schedule names are "Unused Schedules".  These schedules are in the idf
-   **   ~~~   **  file but are never obtained by the simulation and therefore are NOT used.
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=WORK EFF SCH
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=AIR VELO SCH
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLOTHING SCH
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=BLDG LIGHT SCH BAK
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=OLD BLDG EQUIP SCH
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=BLDG SWH SCH
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CW-LOOP-TEMP-SCHEDULE
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FRONTENTRY FANSCHED
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FRONTENTRY COILSCHED
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGTEMPSETPOINT
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FCU-CLGSETP SCH
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=PLANT LOOP HIGH TEMP SCHEDULE
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=PLANT LOOP LOW TEMP SCHEDULE
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=OLD BLDG CONTROLROOM EQUIP SCH
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGSETP SCH BASE EXTENDEDHVAC2
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGSETP SCH BASE EXTENDEDHVAC3
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CLGSETP SCH BASE EXTENDEDHVAC
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 29.4
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 19
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 23
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 1
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 12.8
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=HVACTEMPLATE-ALWAYS 7.22
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=COMPACT HVAC-ALWAYS 10.0
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=ICE TANK AVAILABILITY
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=FANAVAILSCHEDINVERSE
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=P_LOSS_SCHEDULE
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=DR RESPONSE
-   ************* Schedule:Year or Schedule:Compact or Schedule:File or Schedule:Constant=CPP EVENT
-   ** Warning ** The following week schedule names are "Unused Schedules".  These schedules are in the idf
-   **   ~~~   **  file but are never obtained by the simulation and therefore are NOT used.
-   ************* Schedule:Week:Daily or Schedule:Week:Compact=P_LOSS_SCHEDULE_wk_
-   ************* Schedule:Week:Daily or Schedule:Week:Compact=DR RESPONSE_wk_
-   ************* Schedule:Week:Daily or Schedule:Week:Compact=CPP EVENT_wk_
-   ** Warning ** The following day schedule names are "Unused Schedules".  These schedules are in the idf
-   **   ~~~   **  file but are never obtained by the simulation and therefore are NOT used.
-   ************* Schedule:Day:Hourly or Schedule:Day:Interval or Schedule:Day:List=P_LOSS_SCHEDULE_dy_
-   ************* Schedule:Day:Hourly or Schedule:Day:Interval or Schedule:Day:List=DR RESPONSE_dy_
-   ************* Schedule:Day:Hourly or Schedule:Day:Interval or Schedule:Day:List=CPP EVENT_dy_
+   ** Severe  ** ExternalInterface: Socket communication received error value "-1" at time = 0.00 hours.
+   **   ~~~   ** ExternalInterface: Flag from server " 0".
+   **  Fatal  ** Error in ExternalInterface: Check EnergyPlus *.err file.
+   ...Summary of Errors that led to program termination:
+   ..... Reference severe error count=3
+   ..... Last severe error=ExternalInterface: Socket communication received error value "-1" at time = 0.00 hours.
+   ** Warning ** There is no BYPASS component in the demand-side of PlantLoop =COOLSYS1
+   **   ~~~   ** You may be able to fix the fatal error above by adding a demand-side BYPASS PIPE.
    *************
    ************* ===== Final Error Summary =====
    ************* The following error categories occurred.  Consider correcting or noting.
@@ -441,4 +390,4 @@ Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 12:19,
    *************
    ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 2 Severe Errors.
    ************* EnergyPlus Sizing Error Summary. During Sizing: 26 Warning; 0 Severe Errors.
-   ************* EnergyPlus Completed Successfully-- 52 Warning; 2 Severe Errors; Elapsed Time=00hr 00min 16.42sec
+   ************* EnergyPlus Terminated--Fatal Error Detected. 49 Warning; 3 Severe Errors; Elapsed Time=00hr 00min 14.55sec

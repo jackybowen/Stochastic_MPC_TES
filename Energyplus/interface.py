@@ -1,4 +1,6 @@
 import json
+import requests
+
 class DataSampler:
     def __init__(self):
         self.skipheader = 5 # Number of lines to skip in the header
@@ -17,14 +19,12 @@ class DataSampler:
             key_list.append("Tmix"+str(i))
         self.keylist = key_list
         ##########################################################
-        # 0~4 header
-        # 5 :        time
-        # 6~30:      Zone mean air temperature
-        # 31~54, 56: Zone Air flow
-        # 55:        SupplyAirFlow for AHU-002
-        # 57~81:     Zone discharge Air Temperature
-        # 82~86, 88~97:     AHU level DischargeAirTemp, SupplyAirFlow, ReturnAirTemp, MixedAirTemp.
-        # 87:        Zone Air flow for AHU-002
+        # 0~4:      header
+        # 5:        time
+        # 6~30:     Zone mean air temperature
+        # 31~56:    Zone Air flow
+        # 57~81:    Zone discharge Air Temperature
+        # 82~97:    AHU level DischargeAirTemp, SupplyAirFlow, ReturnAirTemp, MixedAirTemp.
         ##########################################################
 
     def work(self, url):
@@ -45,12 +45,14 @@ class DataSampler:
         keys = Outputdict.keys()
         key_list = list(keys)
         n = len(Outputdict[key_list[0]])
+        if len(Windowlen) == 0:
+            Windowlen = self.Windowlen
         if n < Windowlen:
             for i in range(len(key_list)):
-                Outputdict[key_list[i]].append(float(Inputlist[i]))
+                Outputdict[key_list[i]].append(float(Inputlist[i+self.skipheader]))
         else:
             with open('./input.json','w') as f:
                 json.dump(Outputdict, f)
             Outputdict = {k:[] for k in self.keylist}
-            # result = self.work('http://127.0.0.1:5000')
-        return Outputdict
+            result = self.work('http://127.0.0.1:5000')
+        return Outputdict, result

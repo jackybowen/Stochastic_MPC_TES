@@ -1,4 +1,4 @@
-Program Version:,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 12:19
+Program Version:,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 13:49
 Tabular Output Report in Format: ,Comma
 
 Building:,CLGSetPtNormal
@@ -177,7 +177,7 @@ FOR:,Entire Facility
 General
 
 ,,Value
-,Program Version and Build,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 12:19
+,Program Version and Build,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 13:49
 ,RunPeriod,TYPICAL SUMMER WEEK
 ,Weather File,Pasco WA USA TMY3 WMO#=727845
 ,Latitude [deg],46.27
