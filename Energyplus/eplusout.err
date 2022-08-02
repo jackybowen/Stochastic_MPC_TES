@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 15:05,
+Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.08.02 10:35,
    ************* Beginning Zone Sizing Calculations
    ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 29.4", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
    ** Warning ** ProcessScheduleInput: Schedule:Compact="HVACTEMPLATE-ALWAYS 19", Schedule Type Limits Name="HVACTEMPLATE ANY NUMBER" not found -- will not be validated
@@ -366,12 +366,12 @@ Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 15:05,
    **   ~~~   ** ..Min Temp Comparison = 0.26 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
    **   ~~~   ** ..Max Heat Load Comparison = 2.4666E-002 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
    **   ~~~   ** ..Max Cool Load Comparison = 3.6293E-003 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   ** Severe  ** ExternalInterface: Socket communication received error value "-1" at time = 0.00 hours.
+   ** Severe  ** ExternalInterface: Socket communication received error value "-1" at time = 97.91 hours.
    **   ~~~   ** ExternalInterface: Flag from server " 0".
    **  Fatal  ** Error in ExternalInterface: Check EnergyPlus *.err file.
    ...Summary of Errors that led to program termination:
    ..... Reference severe error count=3
-   ..... Last severe error=ExternalInterface: Socket communication received error value "-1" at time = 0.00 hours.
+   ..... Last severe error=ExternalInterface: Socket communication received error value "-1" at time = 97.91 hours.
    ** Warning ** There is no BYPASS component in the demand-side of PlantLoop =COOLSYS1
    **   ~~~   ** You may be able to fix the fatal error above by adding a demand-side BYPASS PIPE.
    *************
@@ -390,4 +390,4 @@ Program Version,EnergyPlus, Version 9.0.1-bb7ca4f0da, YMD=2022.07.26 15:05,
    *************
    ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 2 Severe Errors.
    ************* EnergyPlus Sizing Error Summary. During Sizing: 26 Warning; 0 Severe Errors.
-   ************* EnergyPlus Terminated--Fatal Error Detected. 49 Warning; 3 Severe Errors; Elapsed Time=00hr 00min 14.55sec
+   ************* EnergyPlus Terminated--Fatal Error Detected. 49 Warning; 3 Severe Errors; Elapsed Time=02hr 38min 13.69sec

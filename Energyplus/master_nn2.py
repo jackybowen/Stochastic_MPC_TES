@@ -133,6 +133,8 @@ server.sock.listen(10)
 
 conn,addr=server.sock.accept()
 index=1
+result = {'Tset'+str(z+1):21.1 for z in range(sampler.Numzones)}
+windowlen = 12
 while 1:
 
 
@@ -154,20 +156,23 @@ while 1:
               time=float(arry[5])
               ################## Add interface code by Bowen ####################
               print(time)
-              Outputdict, result = sampler.sample2dict(Outputdict,arry,12)
-              print("Start Display:")
-              print(float(arry[6]))
-              print("End Display")
-
+              Outputdict = sampler.sample2dict(Outputdict,arry,windowlen)
+              if (len(Outputdict['Time']) == windowlen):
+                  with open('./input.json','w') as f:
+                      json.dump(Outputdict, f)
+                  Outputdict = {k:[] for k in sampler.keylist}
+                  result = sampler.work('http://127.0.0.1:5000')
+                #   tm.sleep(10)
               ###################################################################
-              mssg = '%r %r %r 0 0 %r' % (vers, flag, ePlusInputs, time)              
+              mssg = '%r %r %r 0 0 %r' % (vers, flag, ePlusInputs, time)
 #              for i in range(ePlusInputs):
               mssg=mssg+' '+str(1)
               mssg=mssg+' '+str(0)
               mssg=mssg+' '+str(1)
               for i in range(25):
-                   mssg=mssg+' '+str(21.1) 
-              print(mssg)                   
+                  mssg=mssg+' '+str(result['Tset'+str(i+1)])
+                #    mssg=mssg+' '+str(21.1)
+              print(mssg)
               conn.send((mssg+'\n').encode())
          index=index+1
 

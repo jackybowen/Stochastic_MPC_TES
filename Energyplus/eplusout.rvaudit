@@ -4,7 +4,7 @@
  output file:eplusout.csv
  getting all vars from:eplusout.eso
   number variables requested for output=         330
- ReadVars Run Time=00hr 00min  0.70sec
+ ReadVars Run Time=00hr 00min  0.75sec
  ReadVarsESO program completed successfully.
  ReadVarsESO
  processing:.SEB.mvi

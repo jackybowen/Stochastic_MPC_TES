@@ -1,0 +1,26 @@
+,min,max
+ZONE-VAV-102 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.573252917
+ZONE-VAV-118 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.218091731
+ZONE-VAV-119 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.040372428
+ZONE-VAV-120 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.041337028
+ZONE-VAV-123A VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.266396259
+ZONE-VAV-123B VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.273843119
+ZONE-VAV-127A VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.757621088
+ZONE-VAV-127B VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,1.304339216
+ZONE-VAV-129 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.140229315
+ZONE-VAV-131 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.057185006
+ZONE-VAV-133 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.125506316
+ZONE-VAV-136 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.156522245
+ZONE-VAV-142 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.869291464
+ZONE-VAV-143 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.164167479
+ZONE-VAV-150 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.177382708
+ZONE-VAV-CORRIDOR VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.533686817
+ZONE-VAV-RESTROOM VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.036770832
+ZONE-VAV-104 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.053009446
+ZONE-VAV-105 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.523943806
+ZONE-VAV-107 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.070821346
+ZONE-VAV-108 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.288893736
+ZONE-VAV-112 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.18935929
+ZONE-VAV-116 VAV BOX OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.036368993
+AHU-002 SUPPLY EQUIPMENT OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.786682221
+AHU-004 SUPPLY EQUIPMENT OUTLET NODE:System Node Mass Flow Rate [kg/s](TimeStep),0,0.590365874

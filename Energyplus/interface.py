@@ -1,22 +1,28 @@
+from genericpath import exists
 import json
+from attr import NOTHING
 import requests
+import time
 
 class DataSampler:
     def __init__(self):
         self.skipheader = 5 # Number of lines to skip in the header
-        self.Windowlen = 1  # length of window for data sampling
+        self.Windowlen = 12  # length of control window for data sampling
         self.Numzones = 25  # Number of zones
         self.NumAHUs = 4     # Number of AHUs
-        key_list = ["time","OutdoorAirTemperature"]
+        key_list = ["Time","OutdoorAirTemperature"]
         for i in range(self.Numzones):
-            key_list.append("Tzon"+str(i))
+            key_list.append("Tzon"+str(i+1))
         for i in range(self.Numzones):
-            key_list.append("Mflow"+str(i))
+            key_list.append("Mflow"+str(i+1))
+        for i in range(self.Numzones):
+            key_list.append("Tzondis"+str(i+1))
         for i in range(self.NumAHUs):
-            key_list.append("Tahudis"+str(i))
-            key_list.append("Sflow"+str(i))
-            key_list.append("Tret"+str(i))
-            key_list.append("Tmix"+str(i))
+            key_list.append("Tahudis"+str(i+1))
+            key_list.append("Sflow"+str(i+1))
+            key_list.append("Tret"+str(i+1))
+            key_list.append("Tmix"+str(i+1))
+        # key_list.append("OATforecast")
         self.keylist = key_list
         ##########################################################
         # 0~4:      header
@@ -35,24 +41,27 @@ class DataSampler:
             data = f.read()
         u = json.loads(data)
     #	json_object = json.dumps(u, indent = 4,default=str)
-        result = requests.post('{0}/calculate'.format(url), json=u).json()
+        result = requests.post('{0}/calculate'.format(url), json=u, timeout=300).json()
+        # while True:
+        #     time.sleep(60) # sixty second delay
+        #     try:
+        #         isexist(file_name)
+        #         break
+        #     except Error:
+        #         print ("Result not ready, trying again in one minute")
         # with open('./output.json','w') as f:
         # 	json.dump(result, f)
         # print result
         return result
 
-    def sample2dict(self, Outputdict, Inputlist, Windowlen):
+    def sample2dict(self, Outputdict, Inputlist, Windowlen = NOTHING):
         keys = Outputdict.keys()
         key_list = list(keys)
-        n = len(Outputdict[key_list[0]])
-        if len(Windowlen) == 0:
+
+        if Windowlen is NOTHING:
             Windowlen = self.Windowlen
-        if n < Windowlen:
-            for i in range(len(key_list)):
-                Outputdict[key_list[i]].append(float(Inputlist[i+self.skipheader]))
-        else:
-            with open('./input.json','w') as f:
-                json.dump(Outputdict, f)
-            Outputdict = {k:[] for k in self.keylist}
-            result = self.work('http://127.0.0.1:5000')
-        return Outputdict, result
+        for i in range(len(key_list)):
+            Outputdict[key_list[i]].append(float(Inputlist[i+self.skipheader]))
+        n = len(Outputdict[key_list[0]])
+            
+        return Outputdict

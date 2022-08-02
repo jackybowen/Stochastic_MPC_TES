@@ -1,0 +1,159 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.33
+    framework: lightning
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.6.9
+    t:
+      1:
+      - 1
+      - 9
+      2:
+      - 1
+      - 5
+      - 9
+      3:
+      - 3
+      - 5
+      4: 3.6.9
+      5: 0.10.33
+      8:
+      - 5
+dataloader.batch_size:
+  desc: null
+  value: 256
+dataloader/batch_size:
+  desc: null
+  value: 256
+dataloader/drop_last:
+  desc: null
+  value: false
+dataloader/num_workers:
+  desc: null
+  value: 8
+dataloader/pin_memory:
+  desc: null
+  value: true
+dataloader/shuffle:
+  desc: null
+  value: true
+dataset:
+  desc: null
+  value: tcilc
+dataset.which_city:
+  desc: null
+  value: d
+dataset/_target_:
+  desc: null
+  value: data.tcc_data_module_city
+dataset/data_dir:
+  desc: null
+  value: /research/hutchinson/workspace/pashbyl/ml_tcc/data/tcilc_data/
+dataset/tcilc:
+  desc: null
+  value: true
+dataset/which_city:
+  desc: null
+  value: d
+model:
+  desc: null
+  value: dnn
+model.criterion:
+  desc: null
+  value: mse
+model.input_size:
+  desc: null
+  value: 6
+model.layer_specs:
+  desc: null
+  value:
+  - 64
+  - 64
+  - 64
+  - 64
+model.output_size:
+  desc: null
+  value: 3
+model/_target_:
+  desc: null
+  value: models.simple_dnn
+model/criterion:
+  desc: null
+  value: mse
+model/input_size:
+  desc: null
+  value: 6
+model/layer_specs:
+  desc: null
+  value:
+  - 64
+  - 64
+  - 64
+  - 64
+model/output_size:
+  desc: null
+  value: 3
+optimizer.lr:
+  desc: null
+  value: 0.0089028646890252
+optimizer.optimizer:
+  desc: null
+  value: adam
+optimizer/lr:
+  desc: null
+  value: 0.0089028646890252
+optimizer/optimizer:
+  desc: null
+  value: adam
+seed:
+  desc: null
+  value: 1234
+trainer.max_epochs:
+  desc: null
+  value: 800
+trainer/check_val_every_n_epoch:
+  desc: null
+  value: 1
+trainer/gpus:
+  desc: null
+  value: 1
+trainer/log_gpu_memory:
+  desc: null
+  value: true
+trainer/max_epochs:
+  desc: null
+  value: 800
+trainer/profiler:
+  desc: null
+  value: simple
+use_wandb:
+  desc: null
+  value: true
+wandb.tags:
+  desc: null
+  value:
+  - C&D
+  - DNN
+  - denver
+  - eplus
+  - tcilc
+  - MAE
+wandb/log_model:
+  desc: null
+  value: true
+wandb/project:
+  desc: null
+  value: tcc cities
+wandb/tags:
+  desc: null
+  value:
+  - C&D
+  - DNN
+  - denver
+  - eplus
+  - tcilc
+  - MAE
