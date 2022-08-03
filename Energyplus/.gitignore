@@ -1,0 +1,15 @@
+# ignore all eplusout files
+eplus*.*
+
+# ignore baseline.csv
+baseline.csv
+
+# ignore log file
+utilSocket.log
+
+# ignore intermediate .cfg file
+variables.cfg
+socket.cfg
+
+#ignore err file
+sqlite.err
