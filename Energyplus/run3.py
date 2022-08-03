@@ -19,7 +19,7 @@ if os.name == 'nt':
 else:
    cmdStr = "energyplus -w \"%s\" -r \"%s\"" % (weatherPath, modelPath)
 
-sock = subprocess.Popen('python master_nn2.py'+' '+modelPath+' '+'ep_SEB.config', shell=True)
+sock = subprocess.Popen('python master_nn_baseline.py'+' '+modelPath+' '+'ep_SEB.config', shell=True)
 #sock = subprocess.Popen('python master_nn.py'+' '+'BRSW2.idf'+' '+'ep_BRSW2.config', shell=False)
 simulation = subprocess.Popen(cmdStr, shell=True)
 simulation.wait()
