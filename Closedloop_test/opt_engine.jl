@@ -26,9 +26,7 @@ function run(GUI_input::Dict)
     end
 
     ###### Chiller power Optimal Scheduling ######
-    fan_params = [0 0.9468 0.0186 0]
     # looking at a 24-hour-ahead time window for the optimal scheduling
-    H = Int(24/dT);
     t0 = Int(t_0); # start timestamp in minute
     if solverflag == 1
         m = Model(Ipopt.Optimizer);
@@ -49,7 +47,7 @@ function run(GUI_input::Dict)
 	# @variable(m, ahusupplytemp[t = 1:H],lower_bound = ahusupplytemp_min, upper_bound = ahusupplytemp_max)
 
 	# damper positions at the AHU level
-	@variable(m, ahudamper[t = 1:H], lower_bound = damper_min, upper_bound = damper_max)
+	@variable(m, ahudamper[f = 1:numahu, t = 1:H], lower_bound = damper_min, upper_bound = damper_max)
 
 	# # discharge-air temperatures at the zone level
 	# @variable(m, zonedischargetemp[z = 1:numzones, t = 1:H], upper_bound = zonedischargetemp_max)
@@ -59,10 +57,10 @@ function run(GUI_input::Dict)
 
 	## list of  auxiliary optimization variables (these are NOT sent to Modelica)
 	# mixed-air temperatures at the AHU level
-	@variable(m, ahumixedtemp[t = 1:H])
+	@variable(m, ahumixedtemp[f = 1:numahu, t = 1:H])
 
 	# return-air temperatures at the AHU level
-	@variable(m, ahureturntemp[t = 1:H])
+	@variable(m, ahureturntemp[f = 1:numahu, t = 1:H])
 
     # @variable(m, p_c[z = 1:numzones, t = 1:H], Bin);   # hourly chiller power (Binary variable)
 	# @variable(m, slack_u[z = 1:numzones, t = 1:H] >= 0.0)
@@ -74,18 +72,19 @@ function run(GUI_input::Dict)
 	# if  uncertout_flag == 0
     # @constraint(m, zon_temp_cons_init[z=1:numzones, t=1], Tzon[z,t] == coeffs[z,4] + coeffs[z,3]*T_init[z]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,1]*Pm[z]*p_c[z,t])
     # @constraint(m, zon_temp_cons[z=1:numzones, t=2:H], Tzon[z,t] == coeffs[z,4] + coeffs[z,3]*Tzon[z,t-1]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,1]*Pm[z]*p_c[z,t])
+
 	@constraint(m, mflow_cons_init[z=1:numzones, t=1], zoneflow[z,t] == coeffs[z,4] + coeffs[z,1]*T_init[z]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,3]*Tzon[z,t])
 	@constraint(m, mflow_cons[z=1:numzones, t=2:H], zoneflow[z,t] == coeffs[z,4] + coeffs[z,1]*Tzon[z,t-1]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,3]*Tzon[z,t])
 	# VB constraints
-	@NLexpression(m, sum_zoneflows[t = 1:H], sum(zoneflow[z, t] for z in 1:numzones))
-	@NLexpression(m, fanenergy[t = 1:H], fan_params[1] + fan_params[2] * sum_zoneflows[t] + fan_params[3] * (sum_zoneflows[t])^2 + fan_params[4] * (sum_zoneflows[t])^3)
+	@NLexpression(m, sum_zoneflows[f=1:numahu, t = 1:H], sum(zoneflow[z, t] for z in ahuzonelist[f]))
+	@NLexpression(m, fanenergy[t = 1:H], sum(fan_params[f,4] + fan_params[f,1] * sum_zoneflows[f,t] + fan_params[f,2] * (sum_zoneflows[f,t])^2 + fan_params[f,3] * (sum_zoneflows[f,t])^3 for f in 1:numahu))
 
     # return-air temperature constraints (definiton)
-    @NLconstraint(m, return_cons[t = 1:H],ahureturntemp[t] * sum(zoneflow[z,t] for z in 1:numzones) == sum(zoneflow[z,t] * Tzon[z,t] for z in 1:numzones))
+    @NLconstraint(m, return_cons[f = 1:numahu, t = 1:H],ahureturntemp[f,t] * sum_zoneflows[f,t] == sum(zoneflow[z,t] * Tzon[z,t] for z in ahuzonelist[f]))
     # mixed-air temperature constraints (definition)
-    @NLconstraint(m, mixed_cons[t = 1:H],ahumixedtemp[t] == ahudamper[t] * T_oa_p[t] + (1.0 - ahudamper[t]) * ahureturntemp[t])
+    @NLconstraint(m, mixed_cons[f = 1:numahu, t = 1:H],ahumixedtemp[f,t] == ahudamper[f,t] * T_oa_p[t] + (1.0 - ahudamper[f,t]) * ahureturntemp[f,t])
 	# expression for chiller capacity (energy) delivered
-	@NLexpression(m, chillercapacity[t = 1:H], specheat/COP * sum_zoneflows[t] * (ahumixedtemp[t] - 12.8))
+	@NLexpression(m, chillercapacity[t = 1:H], sum(chiller_params[f] * sum_zoneflows[f,t] * (ahumixedtemp[f,t] - dischargetemp[f,t]) for f in 1:numahu))
 
 	# elseif uncertout_flag == 1
 	# 	@constraint(m, zon_temp_cons_init[z=1:numzones, t=1], Tzon[z,t] == coeffs[z,4] + coeffs[z,3]*T_init[z]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,1]*Pm[z]*p_c[z,t] + Tz_n[z,t])
