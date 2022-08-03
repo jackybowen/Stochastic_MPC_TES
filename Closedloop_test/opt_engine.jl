@@ -85,7 +85,7 @@ function run(GUI_input::Dict)
     # mixed-air temperature constraints (definition)
     @NLconstraint(m, mixed_cons[t = 1:H],ahumixedtemp[t] == ahudamper[t] * T_oa_p[t] + (1.0 - ahudamper[t]) * ahureturntemp[t])
 	# expression for chiller capacity (energy) delivered
-	@NLexpression(m, chillercapacity[t = 1:H], specheat/COP * sum_zoneflows[t] * (ahumixedtemp[t] - 22.8))
+	@NLexpression(m, chillercapacity[t = 1:H], specheat/COP * sum_zoneflows[t] * (ahumixedtemp[t] - 12.8))
 
 	# elseif uncertout_flag == 1
 	# 	@constraint(m, zon_temp_cons_init[z=1:numzones, t=1], Tzon[z,t] == coeffs[z,4] + coeffs[z,3]*T_init[z]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,1]*Pm[z]*p_c[z,t] + Tz_n[z,t])
@@ -94,8 +94,8 @@ function run(GUI_input::Dict)
 
     # # Force heat power to be zero
     # @constraint(m, heater_cons[z = 1:numzones, t=1:H], p_h[z,t] == 0.0)
-	penalty_u = 1e5;
-    penalty_d = 1e3;
+	# penalty_u = 1e5;
+    # penalty_d = 1e3;
     if optcost_flag == 1
 		# for t=1:H
 		# 	println("Time:",t0+Int((t-1)*60*dT))

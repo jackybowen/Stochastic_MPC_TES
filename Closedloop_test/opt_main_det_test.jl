@@ -85,8 +85,8 @@ function run(GUI_input::Dict)
 
 	global Optimization_input = Dict("numzones" => numzones,
 									"coeffs"=>coeffs,
-									"COP"   => 0.75,
-									"specheat"=>1005,#1.005 KJ/kg K
+									"COP"   => 6.16,
+									"specheat"=>1006,#1.006 KJ/kg K #https://www.engineeringtoolbox.com/air-specific-heat-capacity-d_705.html
 									"price" => price,
 									"min_idx"=>min_idx,
 									# "hour_idx"=>hour_idx,
