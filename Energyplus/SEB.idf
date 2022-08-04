@@ -132,7 +132,7 @@
     1,                       !- Begin Day of Month
     ,                        !- Begin Year
     8,                       !- End Month
-    5,                       !- End Day of Month
+    14,                       !- End Day of Month
     ,                        !- End Year
     Monday,                  !- Day of Week for Start Day
     No,                      !- Use Weather File Holidays and Special Days
@@ -302,19 +302,19 @@
     On/Off,                  !- Schedule Type Limits Name
     Through: 12/31,          !- Field 1
     For: Weekdays,           !- Field 2
-    Until: 06:00,0,          !- Field 3
+    Until: 06:00,1,          !- Field 3
     Until: 18:00,1,          !- Field 5
-    Until: 24:00,0,          !- Field 7
+    Until: 24:00,1,          !- Field 7
     For: SummerDesignDay,    !- Field 9
-    Until: 05:00,0,          !- Field 10
+    Until: 05:00,1,          !- Field 10
     Until: 18:00,1,          !- Field 12
-    Until: 24:00,0,          !- Field 14
+    Until: 24:00,1,          !- Field 14
     For: WinterDesignDay,    !- Field 16
-    Until: 05:00,0,          !- Field 17
+    Until: 05:00,1,          !- Field 17
     Until: 18:00,1,          !- Field 19
-    Until: 24:00,0,          !- Field 21
+    Until: 24:00,1,          !- Field 21
     For: Saturday Sunday Holidays AllOtherDays, !- Field 23
-    Until: 24:00,0;          !- Field 24
+    Until: 24:00,1;          !- Field 24
 
   Schedule:Compact,
     BLDG LIGHT SCH,          !- Name
@@ -14781,7 +14781,7 @@ FenestrationSurface:Detailed,
 
   Chiller:Electric:EIR,
     SEB Chiller,             !- Name
-    281195,                  !- Reference Capacity {W}
+    281195000,                  !- Reference Capacity {W}
     3.5,                     !- Reference COP {W/W}
     6.67,                    !- Reference Leaving Chilled Water Temperature {C}
     29.4,                    !- Reference Entering Condenser Fluid Temperature {C}
