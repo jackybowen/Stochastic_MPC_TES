@@ -6,13 +6,13 @@ import numpy as np
 import json
 regr = linear_model.LinearRegression()
 
-zonelist  = ['VAV-102', 'VAV-118', 'VAV-119','VAV-120','VAV-123A','VAV-123B','VAV-127A','VAV-127B','VAV-129','VAV-131','VAV-133','VAV-136','VAV-142','VAV-143','VAV-150','VAV-CORRIDOR','VAV-RESTROOM','VAV-104','VAV-105','VAV-107','VAV-108','VAV-112','VAV-116']
+zonelist  = ['AHU-002','AHU-004']
 
 for i in range(len(zonelist)):
     tab=pd.read_csv('{}.csv'.format(zonelist[i]))
 
     x=tab.loc[:,('temp_pre', 'tempset', 'tout')]
-    y = tab['mdot']
+    y = tab['tempsupply']
 
     regr.fit(x, y)
     coeffs = {}

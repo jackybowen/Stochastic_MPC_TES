@@ -47,15 +47,19 @@ tmixs = ['AHU-00'+str(z)+' OA COOLCNODE:System Node Temperature [C](TimeStep)' f
 
 tdiss = ['AHU-00'+str(z)+' SUPPLY EQUIPMENT OUTLET NODE:System Node Temperature [C](TimeStep)' for z in [1,2,3,4]]
 
+chiller = 'SEB CHILLER:Chiller Electric Power [W](TimeStep)'
+
 for i in range(len(ahu_mflow)):
     flow = tab[ahu_mflow[i]].to_list()
     power = tab[fanpower[i]].to_list()
     tinlet = tab[tmixs[i]].to_list()
     toutlet = tab[tdiss[i]].to_list()
+    power = tab[chiller].to_list()
     tabs = pd.DataFrame()
     tabs['power'] = power
     tabs['flow'] = flow    
     tabs['tinlet'] = tinlet
-    tabs['toutlet'] = toutlet 
+    tabs['toutlet'] = toutlet
+    tabs['chiller_power'] = power    
     tabs = tabs.groupby(np.arange(len(tabs))//12).mean()
     tabs.to_csv('ahu_{}.csv'.format(i+1))
