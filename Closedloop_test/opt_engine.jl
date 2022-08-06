@@ -49,8 +49,8 @@ function run(GUI_input::Dict)
 	# damper positions at the AHU level
 	@variable(m, ahudamper[f = 1:numahu, t = 1:H], lower_bound = damper_min, upper_bound = damper_max)
 
-	# # discharge-air temperatures at the zone level
-	# @variable(m, zonedischargetemp[z = 1:numzones, t = 1:H], upper_bound = zonedischargetemp_max)
+	# discharge-air temperatures at the zone level
+	@variable(m, ahudischargetemp[f = 1:numahu, t = 1:H])
 
 	# mass-flow rates at the zone level
 	@variable(m, zoneflow[z = 1:numzones, t = 1:H],lower_bound = zoneflow_min, upper_bound = zoneflow_max)
@@ -73,18 +73,30 @@ function run(GUI_input::Dict)
     # @constraint(m, zon_temp_cons_init[z=1:numzones, t=1], Tzon[z,t] == coeffs[z,4] + coeffs[z,3]*T_init[z]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,1]*Pm[z]*p_c[z,t])
     # @constraint(m, zon_temp_cons[z=1:numzones, t=2:H], Tzon[z,t] == coeffs[z,4] + coeffs[z,3]*Tzon[z,t-1]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,1]*Pm[z]*p_c[z,t])
 
-	@constraint(m, mflow_cons_init[z=1:numzones, t=1], zoneflow[z,t] == coeffs[z,4] + coeffs[z,1]*T_init[z]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,3]*Tzon[z,t])
-	@constraint(m, mflow_cons[z=1:numzones, t=2:H], zoneflow[z,t] == coeffs[z,4] + coeffs[z,1]*Tzon[z,t-1]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,3]*Tzon[z,t])
-	# VB constraints
+	@constraint(m, mflow_cons_init[z in mzonelist, t=1], zoneflow[z,t] == coeffs[z,4] + coeffs[z,1]*T_init[z]+coeffs[z,2]*T_oa_p[t]+ coeffs[z,3]*Tzon[z,t])
+	@constraint(m, mflow_cons[z in mzonelist, t=2:H], zoneflow[z,t] == coeffs[z,4] + coeffs[z,1]*Tzon[z,t-1]+coeffs[z,2]*T_oa_p[t] + coeffs[z,3]*Tzon[z,t])
+	# Constant air mass flow rate for single zone(AHU002, AHU004)
+	@constraint(m, mflow_cons_const[z in szonelist, t=1:H], zoneflow[z,t] == m_init[z])
+
+	# Fan power constraints
 	@NLexpression(m, sum_zoneflows[f=1:numahu, t = 1:H], sum(zoneflow[z, t] for z in ahuzonelist[f]))
 	@NLexpression(m, fanenergy[t = 1:H], sum(fan_params[f,4] + fan_params[f,1] * sum_zoneflows[f,t] + fan_params[f,2] * (sum_zoneflows[f,t])^2 + fan_params[f,3] * (sum_zoneflows[f,t])^3 for f in 1:numahu))
 
+	# Chiller power constraints
     # return-air temperature constraints (definiton)
     @NLconstraint(m, return_cons[f = 1:numahu, t = 1:H],ahureturntemp[f,t] * sum_zoneflows[f,t] == sum(zoneflow[z,t] * Tzon[z,t] for z in ahuzonelist[f]))
     # mixed-air temperature constraints (definition)
     @NLconstraint(m, mixed_cons[f = 1:numahu, t = 1:H],ahumixedtemp[f,t] == ahudamper[f,t] * T_oa_p[t] + (1.0 - ahudamper[f,t]) * ahureturntemp[f,t])
+	# discharge-air temperature constraints for single-zone served AHU(AHU-002, AHU-004)
+	@constraint(m, supplytemp_cons_init[f in sahulist, t=1], ahudischargetemp[f,t] == coeffs[ahuzonelist[f],4] + coeffs[ahuzonelist[f],1]*T_init[ahuzonelist[f]]+coeffs[ahuzonelist[f],2]*T_oa_p[t] + coeffs[ahuzonelist[f],3]*Tzon[ahuzonelist[f],t])
+	@constraint(m, supplytemp_cons[f in sahulist, t=2:H], ahudischargetemp[f,t] == coeffs[ahuzonelist[f],4] + coeffs[ahuzonelist[f],1]*Tzon[ahuzonelist[f],t-1]+coeffs[ahuzonelist[f],2]*T_oa_p[t] + coeffs[ahuzonelist[f],3]*Tzon[ahuzonelist[f],t])
+	# Baseline discharge-air temperature for multi-zone served AHU(AHU001, AHU003)
+	@constraint(m, supplytemp_cons_other[f in mahulist, t=1:H], ahudischargetemp[f,t] == dischargetemp[f,t])
+
+	# expression for AHU load demand
+	@NLexpression(m, load[t = 1:H], sum(sum_zoneflows[f,t] * (ahumixedtemp[f,t] - ahudischargetemp[f,t]) for f in 1:numahu))
 	# expression for chiller capacity (energy) delivered
-	@NLexpression(m, chillercapacity[t = 1:H], sum(chiller_params[f] * sum_zoneflows[f,t] * (ahumixedtemp[f,t] - dischargetemp[f,t]) for f in 1:numahu))
+	@NLexpression(m, chillercapacity[t = 1:H], chiller_params[1] * load[t] + chiller_params[2] * load[t]^2 + chiller_params[3])
 
 	# elseif uncertout_flag == 1
 	# 	@constraint(m, zon_temp_cons_init[z=1:numzones, t=1], Tzon[z,t] == coeffs[z,4] + coeffs[z,3]*T_init[z]+coeffs[z,2]*(T_oa_p[t]) + coeffs[z,1]*Pm[z]*p_c[z,t] + Tz_n[z,t])

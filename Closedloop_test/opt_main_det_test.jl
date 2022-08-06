@@ -5,6 +5,7 @@ using .Opt_engine
 using CSV
 using DataFrames
 using Statistics
+using JSON
 # using Dates
 # using MAT
 
@@ -28,70 +29,84 @@ function run(GUI_input::Dict)
 	uncertout_flag = 0; # 0 for determinstic case of Tout, 1 for stochastic case of Tout
 	optcost_flag = 1;	# enable price profile in the cost function
 
-	Tbd = 2; 			# bandwidth of T bounds around Tsetpoint
+	Tbd = 2; 			# bandwidth of comfort bounds around Tsetpoint
 
 	numzones = 25		# Number of zones in building
 	numahu = 4			# Number of AHUs in building
-	numcoeffs = 4 		# Number of coefficients of zone-temp model
-	# AHU serve zone index: AHu1: 1~17 AHU3:18~23 AHU2:24, AHU4:25
+	# AHU serve zone index: AHU1: 1~17 AHU3:18~23 AHU2:24, AHU4:25
 	ahuzonelist = [1:17,24,18:23,25]
+	mzonelist = [1:23;]
+	szonelist = [24,25]
+	mahulist = [1,3]
+	sahulist = [2,4]
 
 	StartTime = 3300
 	CurrentTime = Int64(Time[end])
-	println("Current time is ",CurrentTime)
 	if CurrentTime <= StartTime
 		t = 60;
 	else
 		t = Int(ceil.((CurrentTime - StartTime)/60))+60;
 	end
+	println("Current time is Hour ",Int(t/60))
 
+##  Receive measurement at t
 	zonelist  = ["VAV-102", "VAV-118", "VAV-119","VAV-120","VAV-123A","VAV-123B","VAV-127A","VAV-127B","VAV-129","VAV-131","VAV-133","VAV-136","VAV-142","VAV-143","VAV-150","VAV-CORRIDOR","VAV-RESTROOM","VAV-104","VAV-105","VAV-107","VAV-108","VAV-112","VAV-116","AHU-002","AHU-004"]
 	tempsetpoints = ["ZONE-$z:Zone Thermostat Cooling Setpoint Temperature [C](TimeStep)" for z in zonelist]
+	tdiss = ["AHU-00$f SUPPLY EQUIPMENT OUTLET NODE:System Node Temperature [C](TimeStep)" for f in 1:numahu]
 	T_oa = Float64(OutdoorAirTemperature[end]);
 	Tinit = zeros(numzones);
+	mflow_init = zeros(numzones);
 	for z = 1:numzones
 		Tinit[z] = mean(eval(Symbol("Tzon$z")))
+		mflow_init[z] = mean(eval(Symbol("Mflow$z")))
 	end
-
+##  Load data from baseline csv files
 	t_i = Int(t/dT_m);
 	Tr = zeros(numzones,H)
 	T_oa_p = zeros(H)
-	Tdischarge = zeros(numahu,H)
+	bsl_tempdischarge = zeros(numahu,H)
 	for i=1:H
+		thrz = t_i+Int((i-1)*60/dT_m)+1:t_i+Int(i*60/dT_m)
 		for z=1:numzones
-			Tr[z,i] = CSV.read(string("profile/baseline_setpoint.csv"),DataFrame)[!,Symbol(tempsetpoints[z])][t_i+Int((i-1)*60/dT_m)];
+			Tr[z,i] = mean(CSV.read(string("profile/baseline_setpoint.csv"),DataFrame)[!,Symbol(tempsetpoints[z])][thrz]);
 		end
 		for f = 1:numahu
-			Tdischarge[f,i] = CSV.read(string("profile/baseline_tempdischarge.csv"),DataFrame)[!,Symbol("AHU$f")][t_i+Int((i-1)*60/dT_m)];
+			bsl_tempdischarge[f,i] = mean(CSV.read(string("profile/baseline_tempdischarge.csv"),DataFrame)[!,Symbol(tdiss[f])][thrz]);
 		end
-		T_oa_p[i] = CSV.read(string("profile/baseline_oat.csv"),DataFrame)[!,Symbol("Environment:Site Outdoor Air Drybulb Temperature [C](TimeStep)")][t_i+Int((i-1)*60/dT_m)];
+		T_oa_p[i] = mean(CSV.read(string("profile/baseline_oat.csv"),DataFrame)[!,Symbol("Environment:Site Outdoor Air Drybulb Temperature [C](TimeStep)")][thrz]);
 	end
 	Tzmin = Tr.+Tbd;
 	Tzmax = Tr.-Tbd;
+	println("Hourly OutdoorAirTemperatures for next 24 hours: ", T_oa_p)
 
 	# T_oa_p = repeat(Toa_p,inner=(Int(60/Delta_T),1));
 	price = CSV.read(string("profile/daily_prices.csv"), DataFrame)[!,Symbol("price")][1:end];# Minutely price for one day
 	price[721:1080] = price[721:1080].*2; # Double the price during occupied period(12pm to 18pm)
 	min_idx = repeat(1:Int(24*60), N+1);
 
-	Coeffs_file1 = string("profile/zonetemp_params.csv");
-	Coeffs_file2 = string("profile/fan_sepa_params.csv");
-	Coeffs_file3 = string("profile/chiller_sepa_params.csv");
-	coeffs = zeros(numzones,numcoeffs)
-	fan_coeffs = zeros(numahu,numcoeffs)
-	chiller_coeffs = zeros(numahu)
+##  Read  Model parameters from JSON files
+	zone_coeffs = zeros(numzones,4)
+	fan_coeffs = zeros(numahu,4)
+	chiller_coeffs = zeros(3)
 	# Pm = zeros(numzones)
-	for k = 1:numcoeffs
-		for z = 1:numzones
-			coeffs[z,k] = CSV.read(Coeffs_file1, DataFrame)[!,Symbol("$z")][k];
-		end
+	for z = 1:numzones
+		coeff_dict = JSON.parsefile("profile/model_params/coeff_$(zonelist[z]).json")
+		zone_coeffs[z,1] = coeff_dict["temp_pre"]
+		zone_coeffs[z,2] = coeff_dict["tout"]
+		zone_coeffs[z,3] = coeff_dict["tempset"]
+		zone_coeffs[z,4] = coeff_dict["intercept"]
 	end
 	for f = 1:numahu
-		for k = 1:numcoeffs
-			fan_coeffs[f,k] = CSV.read(Coeffs_file2, DataFrame)[!,Symbol("AHU$f")][k];
-		end
-		chiller_coeffs[f] = CSV.read(Coeffs_file3, DataFrame)[!,Symbol("AHU$f")][1];
+		coeff_dict = JSON.parsefile("profile/model_params/coeff_ahu_$f.json")
+		fan_coeffs[f,1] = coeff_dict["flow"]
+		fan_coeffs[f,2] = coeff_dict["flow2"]
+		fan_coeffs[f,3] = coeff_dict["flow3"]
+		fan_coeffs[f,4] = coeff_dict["intercept"]
 	end
+	coeff_dict = JSON.parsefile("profile/model_params/coeff_chiller.json")
+	chiller_coeffs[1] = coeff_dict["load"]
+	chiller_coeffs[2] = coeff_dict["load2"]
+	chiller_coeffs[3] = coeff_dict["intercept"]
 	# # Tinit = repeat(Tinit, Int(numzones/10));
 	# global u_t = zeros(numzones)
 	# global Opcost = zeros(1,Ntime)
@@ -101,8 +116,12 @@ function run(GUI_input::Dict)
 
 	global Optimization_input = Dict("numzones" => numzones,
 									"numahu"    =>numahu,
-									"ahuzonelist"   =>ahuzonelist,
-									"coeffs"    =>coeffs,
+									"ahuzonelist"=>ahuzonelist,
+									"mzonelist" => mzonelist,
+									"szonelist" => szonelist,
+									"mahulist"  => mahulist,
+									"sahulist"  => sahulist,
+									"coeffs"    =>zone_coeffs,
 									"fan_params"=>fan_coeffs,
 									"chiller_params"=>chiller_coeffs,
 									"price" 	=> price,
@@ -112,15 +131,18 @@ function run(GUI_input::Dict)
 									"t_0"	=> t,
 									"H"		=> H,
 									"T_init"=>Tinit,
+									"m_init"=>mflow_init,
 									"T_oa"  => T_oa,
 									"T_oa_p"=> T_oa_p,
 									"Tzmin" => Tzmin,
 									"Tzmax" => Tzmax,
-									"dischargetemp" =>Tdischarge,
+									# "ahudischargetemp_min"=>0,
+									# "ahudischargetemp_max"=>30,
+									"dischargetemp" =>bsl_tempdischarge,
 									"damper_min" 	=> 0,
 									"damper_max" 	=> 1,
 									"zoneflow_min" 	=> 0,
-									"zoneflow_max" 	=> 1.3,
+									"zoneflow_max" 	=> 2,
 									"solverflag"	=>solverflag,
 									"uncertoat_flag"=>uncertoat_flag,
 									"uncertout_flag"=>uncertout_flag,
