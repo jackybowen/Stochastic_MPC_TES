@@ -69,7 +69,7 @@ function run(GUI_input::Dict)
 	for i=1:H
 		thrz = t_i+Int((i-1)*60/dT_m)+1:t_i+Int(i*60/dT_m)
 		if thrz[end] > Ndata
-			thrz = mod1.(thrz, Ndata) # Cycle indices when exceeding the max length of data
+			thrz = Int.(mod1.(thrz, Ndata)) # Cycle indices when exceeding the max length of data
 		end
 		for z=1:numzones
 			Tr[z,i] = mean(CSV.read(string("profile/baseline_setpoint.csv"),DataFrame)[!,Symbol(tempsetpoints[z])][thrz]);
