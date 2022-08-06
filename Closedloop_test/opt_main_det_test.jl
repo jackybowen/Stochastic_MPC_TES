@@ -54,7 +54,7 @@ function run(GUI_input::Dict)
 	zonelist  = ["VAV-102", "VAV-118", "VAV-119","VAV-120","VAV-123A","VAV-123B","VAV-127A","VAV-127B","VAV-129","VAV-131","VAV-133","VAV-136","VAV-142","VAV-143","VAV-150","VAV-CORRIDOR","VAV-RESTROOM","VAV-104","VAV-105","VAV-107","VAV-108","VAV-112","VAV-116","AHU-002","AHU-004"]
 	tempsetpoints = ["ZONE-$z:Zone Thermostat Cooling Setpoint Temperature [C](TimeStep)" for z in zonelist]
 	tdiss = ["AHU-00$f SUPPLY EQUIPMENT OUTLET NODE:System Node Temperature [C](TimeStep)" for f in 1:numahu]
-	T_oa = mean(Float64(OutdoorAirTemperature));
+	T_oa = mean(eval(OutdoorAirTemperature));
 	Tinit = zeros(numzones);
 	mflow_init = zeros(numzones);
 	for z = 1:numzones
