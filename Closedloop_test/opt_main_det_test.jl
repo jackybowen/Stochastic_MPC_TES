@@ -22,7 +22,8 @@ function run(GUI_input::Dict)
 	dT = Delta_T/60;    # Delta_T in hour
 	dT_m = 5;           # data resolutin in min,
 	H = Int(24/dT);
-	N = 31;             # Max length of simulation in days
+	N = 14;             # Max length of simulation in days
+	Ndata = N*24*60/dT_m# Max number of baseline data points
 	# Tr = 24;     		# Tzon Setpoint in C
 	solverflag = 1; 	# 1 for the 1st-order RC model
 	uncertoat_flag = 0; # 0 for determinstic case of Toa, 1 for stochastic case of Toa
@@ -53,7 +54,7 @@ function run(GUI_input::Dict)
 	zonelist  = ["VAV-102", "VAV-118", "VAV-119","VAV-120","VAV-123A","VAV-123B","VAV-127A","VAV-127B","VAV-129","VAV-131","VAV-133","VAV-136","VAV-142","VAV-143","VAV-150","VAV-CORRIDOR","VAV-RESTROOM","VAV-104","VAV-105","VAV-107","VAV-108","VAV-112","VAV-116","AHU-002","AHU-004"]
 	tempsetpoints = ["ZONE-$z:Zone Thermostat Cooling Setpoint Temperature [C](TimeStep)" for z in zonelist]
 	tdiss = ["AHU-00$f SUPPLY EQUIPMENT OUTLET NODE:System Node Temperature [C](TimeStep)" for f in 1:numahu]
-	T_oa = Float64(OutdoorAirTemperature[end]);
+	T_oa = mean(Float64(OutdoorAirTemperature));
 	Tinit = zeros(numzones);
 	mflow_init = zeros(numzones);
 	for z = 1:numzones
@@ -67,6 +68,9 @@ function run(GUI_input::Dict)
 	bsl_tempdischarge = zeros(numahu,H)
 	for i=1:H
 		thrz = t_i+Int((i-1)*60/dT_m)+1:t_i+Int(i*60/dT_m)
+		if thrz[end] > Ndata
+			thrz = mod1.(thrz, Ndata) # Cycle indices when exceeding the max length of data
+		end
 		for z=1:numzones
 			Tr[z,i] = mean(CSV.read(string("profile/baseline_setpoint.csv"),DataFrame)[!,Symbol(tempsetpoints[z])][thrz]);
 		end
