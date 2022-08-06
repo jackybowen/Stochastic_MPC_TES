@@ -1,6 +1,7 @@
 # ignore all eplusout files
 eplus*.*
-input.json
+*.json
+*.csv
 
 # ignore baseline.csv
 baseline.csv
