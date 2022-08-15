@@ -79,8 +79,8 @@ function run(GUI_input::Dict)
 		end
 		T_oa_p[i] = mean(CSV.read(string("profile/baseline_oat.csv"),DataFrame)[!,Symbol("Environment:Site Outdoor Air Drybulb Temperature [C](TimeStep)")][thrz]);
 	end
-	Tzmin = Tr.+Tbd;
-	Tzmax = Tr.-Tbd;
+	Tzmin = Tr.-Tbd;
+	Tzmax = Tr.+Tbd;
 	println("Hourly OutdoorAirTemperatures for next 24 hours: ", T_oa_p)
 
 	# T_oa_p = repeat(Toa_p,inner=(Int(60/Delta_T),1));
@@ -158,8 +158,8 @@ function run(GUI_input::Dict)
 	global sol = Opt_engine.run(Optimization_input)
 	# println(cputime)
 	for z = 1:numzones
-		Mf_p[z] = sol[!,r"mflow"][1,z];
-		Tset_p[z] = sol[!,r"tzon"][1,z];
+		Mf_p[z] = sol[!,r"mflow"][2,z];
+		Tset_p[z] = sol[!,r"tzon"][2,z];
 		# Mf_p_store[z,Int(ceil(t/60/dT_m))] = Mf_p[z];
 	end
 	# end
