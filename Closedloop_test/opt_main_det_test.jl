@@ -30,7 +30,7 @@ function run(GUI_input::Dict)
 	uncertout_flag = 0; # 0 for determinstic case of Tout, 1 for stochastic case of Tout
 	optcost_flag = 1;	# enable price profile in the cost function
 
-	Tbd = 2; 			# bandwidth of comfort bounds around Tsetpoint
+	Tbd = 1; 			# bandwidth of comfort bounds around Tsetpoint
 
 	numzones = 25		# Number of zones in building
 	numahu = 4			# Number of AHUs in building
@@ -145,7 +145,7 @@ function run(GUI_input::Dict)
 									"dischargetemp" =>bsl_tempdischarge,
 									"damper_min" 	=> 0,
 									"damper_max" 	=> 1,
-									"zoneflow_min" 	=> 0,
+									"zoneflow_min" 	=> 0.6,
 									"zoneflow_max" 	=> 2,
 									"solverflag"	=>solverflag,
 									"uncertoat_flag"=>uncertoat_flag,
