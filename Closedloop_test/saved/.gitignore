@@ -1,0 +1,5 @@
+# ignore all eplusout files
+eplus*.*
+*.json
+*.csv
+*.png

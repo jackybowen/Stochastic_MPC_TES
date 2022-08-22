@@ -9,6 +9,9 @@ baseline.csv
 # ignore log file
 utilSocket.log
 
+#ignore data process directory
+data_process/
+
 # ignore intermediate .cfg file
 variables.cfg
 socket.cfg
