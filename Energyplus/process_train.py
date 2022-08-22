@@ -51,12 +51,12 @@ chiller = 'SEB CHILLER:Chiller Electric Power [W](TimeStep)'
 
 for i in range(len(ahu_mflow)):
     flow = tab[ahu_mflow[i]].to_list()
-    power = tab[fanpower[i]].to_list()
+    fpower = tab[fanpower[i]].to_list()
     tinlet = tab[tmixs[i]].to_list()
     toutlet = tab[tdiss[i]].to_list()
     power = tab[chiller].to_list()
     tabs = pd.DataFrame()
-    tabs['power'] = power
+    tabs['power'] = fpower
     tabs['flow'] = flow    
     tabs['tinlet'] = tinlet
     tabs['toutlet'] = toutlet
