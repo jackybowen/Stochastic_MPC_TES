@@ -109,7 +109,7 @@ function run(GUI_input::Dict)
     # # Force heat power to be zero
     # @constraint(m, heater_cons[z = 1:numzones, t=1:H], p_h[z,t] == 0.0)
 	penalty_u = 1e8;
-    penalty_d = 1e7;
+    penalty_d = 1e8;
     if optcost_flag == 1
 		# for t=1:H
 		# 	println("Time:",t0+Int((t-1)*60*dT))
@@ -185,7 +185,12 @@ function run(GUI_input::Dict)
     println("Lower bound relaxation cost: ",sol_cost2)
 
     df_cost = DataFrame(t0 = t0, cost = sol_cost, cost1 = sol_cost1, cost2 = sol_cost2)
-    CSV.write("saved_cost.csv", df_cost, append=true)
+	if t0 == 60
+		CSV.write("saved_cost.csv", df_cost, append=false)
+	else
+	    CSV.write("saved_cost.csv", df_cost, append=true)
+	end
+
     # result = DataFrame(
 
     result1 = DataFrame()
@@ -207,7 +212,7 @@ function run(GUI_input::Dict)
         insertcols!(result7,z,Symbol("Tupp_$z")=>vcat(Tzmax[z,1],sol_Tz_upp[z,:]))
         insertcols!(result8,z,Symbol("Tlow_$z")=>vcat(Tzmin[z,1],sol_Tz_low[z,:]))
     end
-    result0 = DataFrame(price = vcat(price[min_idx[t0]], vec(sol_pr)), OutdoorTemperature = vcat(T_oa,vec(T_oa_p)))
+    result0 = DataFrame(price = vcat(price[min_idx[t0]], vec(sol_pr)), OutdoorTemperature = vcat(T_oa,vec(T_oa_p)), Load = vcat(0, vec(sol_load)))
     result = hcat(result0,result1,result2,result3,result4,result5,result6,result7,result8)
 	# println(T_noise)
     return result;
