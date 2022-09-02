@@ -132,7 +132,7 @@
     1,                       !- Begin Day of Month
     ,                        !- Begin Year
     8,                       !- End Month
-    14,                       !- End Day of Month
+    31,                      !- End Day of Month
     ,                        !- End Year
     Monday,                  !- Day of Week for Start Day
     No,                      !- Use Weather File Holidays and Special Days

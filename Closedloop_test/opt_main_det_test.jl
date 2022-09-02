@@ -22,7 +22,7 @@ function run(GUI_input::Dict)
 	dT = Delta_T/60;    # Delta_T in hour
 	dT_m = 5;           # data resolutin in min,
 	H = Int(24/dT);
-	N = 14;             # Max length of simulation in days
+	N = 31;             # Max length of simulation in days
 	Ndata = N*24*60/dT_m# Max number of baseline data points
 	# Tr = 24;     		# Tzon Setpoint in C
 	solverflag = 1; 	# 1 for the 1st-order RC model
